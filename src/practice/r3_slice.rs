@@ -70,17 +70,16 @@ fn test_str5() {
 
 #[test]
 fn test_str6() {
-    for b in "Aa中国人1的".bytes() {
-        print!("{},", b);
-    }
+    let mut bytes:Vec<u8> = Vec::new();
 
-    let bytes = vec![
-        65, 228, 184, 173, 229, 155, 189, 228, 186, 186, 49, 231, 154, 132,
-    ];
+    for b in "Aaおはようございます，你好".bytes() {
+        bytes.push(b);
+    }
+    println!("{:?}",bytes);
 
     let s = String::from_utf8(bytes);
-
     println!();
+
     match s {
         Ok(v) => println!("ok: {}", v),
         Err(e) => println!("Invalid UTF-8 sequence: {}", e),
