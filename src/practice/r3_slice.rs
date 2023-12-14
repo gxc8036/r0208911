@@ -64,7 +64,7 @@ fn test_str4() {
 
 #[test]
 fn test_str5() {
-    let longer_delimiter = r####"A string "" """""""\n with "# in it. And even "##!"####;
+    let longer_delimiter = r####"A string @#$%^&*()"" """""""\n with "# in it. And even "##!"####;
     println!("{}", longer_delimiter);
 }
 
