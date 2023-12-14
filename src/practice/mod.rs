@@ -11,3 +11,5 @@ mod r1_base;
 mod r2_ownership;
 mod r3_slice;
 mod r4_tup;
+mod r5_struct;
+mod r6_enum;
