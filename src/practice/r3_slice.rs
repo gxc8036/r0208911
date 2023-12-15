@@ -1,5 +1,3 @@
-use std::mem::size_of_val;
-
 #[test]
 fn test_slice() {
     let s = String::from("hello world");
@@ -66,28 +64,24 @@ fn test_str4() {
 
 #[test]
 fn test_str5() {
-    let longer_delimiter = r####"A string "" """""""\n with "# in it. And even "##!"####;
+    let longer_delimiter = r####"A string @#$%^&*()"" """""""\n with "# in it. And even "##!"####;
     println!("{}", longer_delimiter);
 }
 
 #[test]
 fn test_str6() {
-    let mut bytes: Vec<u8> = Vec::new();
+    let mut bytes:Vec<u8> = Vec::new();
 
-    let s = "Aaおはようございます，你好";
-
-    println!("{:?}", size_of_val(s));
-
-    for b in s.bytes() {
+    for b in "Aaおはようございます，你好".bytes() {
         bytes.push(b);
     }
-    println!("{:?}", bytes);
+    println!("{:?}",bytes);
 
     let s = String::from_utf8(bytes);
+    println!();
 
     match s {
         Ok(v) => println!("ok: {}", v),
-
         Err(e) => println!("Invalid UTF-8 sequence: {}", e),
     }
 }
