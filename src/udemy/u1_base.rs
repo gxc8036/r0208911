@@ -140,14 +140,50 @@ impl Noisy for RedFox {
     fn get_noise(&self) -> &str { "fox" }
 }
 
+trait StringTools {
+    fn get_len(&self) -> usize;
+}
 
 fn print_noise<T: Noisy>(item: T) {
     println!("{}", item.get_noise())
 }
 
+impl StringTools for String {
+    fn get_len(&self) -> usize {
+        self.len()
+    }
+}
+
 #[test]
 fn test_impl_t() {
-    let fox = RedFox::new();
-    print_noise(fox);
-    print_noise(15_u8);
+    // let fox = RedFox::new();
+    // print_noise(fox);
+    // print_noise(15_u8);
+    let s = String::from("hello");
+    println!("{}", s.get_len());
+}
+
+#[derive(Debug)]
+enum Shot {
+    BullsEye,
+    Hit(String),
+    Miss,
+}
+
+impl Shot {
+    fn points(self) -> i32 {
+        match self {
+            Shot::BullsEye => 5,
+            Shot::Hit(x) if x.as_str() == "hello" => 100,
+            Shot::Hit(x) => 0,
+            Shot::Miss => -1
+        }
+    }
+}
+
+#[test]
+fn test_shot() {
+    let s = Shot::Hit("22".to_string());
+    let v = Shot::points(s);
+    println!("{:?}", v);
 }
