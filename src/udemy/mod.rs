@@ -8,3 +8,4 @@ unused_attributes,   // 禁用未使用属性的警告
 unused_must_use      // 禁用未处理的Result或Option类型的警告
 )]
 mod u1_base;
+mod u2_base;
